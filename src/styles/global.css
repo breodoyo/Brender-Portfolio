@@ -1,17 +1,47 @@
-:root {
-  --color-bg: #f5f6f2;
-  --color-surface: #ebebe3;
-  --color-text: #1b2a4a;
-  --color-text-hover: #2b3d66;
-  --color-text-soft: #525d74;
-  --color-accent: #c98d2e;
-  --color-accent-deep: #8a5e14;
-  --color-border-soft: #3c4963;
+/* ==========================================================================
+   Design tokens — dark theme
 
-  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
-    sans-serif;
+   Every surface is drawn from the navy family, so the page reads as one
+   continuous dark canvas. Text is the original off-white/cream palette.
+   Accents were lightened from their light-theme values so they still clear
+   WCAG AA against navy:
+
+     --text        #F5F6F2 on --bg  -> 14.7:1  (AAA)
+     --text-muted  #A8B0BD on --bg  ->  7.3:1  (AAA)
+     --gold        #C98D2E on --bg  ->  5.6:1  (AA)
+     --terracotta  #C97A5E on --bg  ->  4.9:1  (AA)
+     --green       #86A97A on --bg  ->  6.1:1  (AA)
+   ========================================================================== */
+
+:root {
+  /* Surfaces, darkest to lightest */
+  --bg: #14213d;
+  --surface: #1b2a4a;
+  --surface-deep: #0f1a2e;
+
+  /* Text on dark */
+  --text: #f5f6f2;
+  --text-muted: #a8b0bd;
+  --cream: #eceae1;
+
+  /* Accents, tuned for dark backgrounds */
+  --gold: #c98d2e;
+  --gold-soft: #e0a94a;
+  --terracotta: #c97a5e;
+  --green: #86a97a;
+
+  /* Lines */
+  --border: #3a4c72;
+  --border-soft: #2a3a5c;
+
+  /* Tints for the project wireframe placeholders */
+  --neutral-200: #2a3a5c;
+  --neutral-100: #22314f;
+
   --font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia,
     'Times New Roman', serif;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
     monospace;
 
@@ -21,11 +51,18 @@
   --space-4: 2rem;
   --space-5: 4rem;
 
-  --radius: 6px;
-  --content-width: 72rem;
-  --measure: 34rem;
-  --nav-height: 4.25rem;
+  --radius: 4px;
+
+  --content-width: 74rem;
+  --measure: 36rem;
+  --nav-height: 4.5rem;
+  --rule: 1px solid var(--border);
+  --rule-soft: 1px solid var(--border-soft);
 }
+
+/* ==========================================================================
+   Reset
+   ========================================================================== */
 
 *,
 *::before,
@@ -44,11 +81,13 @@ html {
 }
 
 body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  background-color: var(--bg);
+  color: var(--text);
   font-family: var(--font-sans);
-  line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
 }
 
@@ -57,23 +96,31 @@ body {
 }
 
 [id] {
-  scroll-margin-top: calc(var(--nav-height) + var(--space-3));
+  scroll-margin-top: calc(var(--nav-height) + var(--space-4));
 }
 
 h1,
 h2,
-h3 {
-  line-height: 1.2;
+h3,
+h4 {
+  line-height: 1.15;
   text-wrap: balance;
+  font-weight: 600;
+}
+
+h1,
+h2 {
+  font-family: var(--font-serif);
+  letter-spacing: -0.015em;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 a {
-  color: var(--color-text);
+  color: inherit;
   text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 img,
@@ -91,26 +138,76 @@ select {
   color: inherit;
 }
 
+ul,
+ol {
+  list-style: none;
+}
+
 :focus-visible {
-  outline: 2px solid var(--color-text);
+  outline: 2px solid var(--cream);
   outline-offset: 3px;
 }
 
 ::selection {
-  background-color: var(--color-accent);
-  color: var(--color-text);
+  background-color: var(--gold);
+  color: var(--bg);
 }
 
-/* Page frame: every section sits inside this editorial column. */
+/* ==========================================================================
+   Layout primitives
+
+   The page background is uniform. Separation between sections comes from
+   spacing, the gold label rule, and the lighter --surface panels, not from
+   alternating background bands. Contact and the Footer step up to
+   --surface / --surface-deep to close the page.
+   ========================================================================== */
+
 .shell {
   width: 100%;
   max-width: var(--content-width);
   margin-inline: auto;
-  padding-inline: clamp(1.25rem, 5vw, 3rem);
+  padding-inline: clamp(1.25rem, 5vw, 3.5rem);
 }
 
+.section {
+  padding-block: clamp(4rem, 9vw, 7.5rem);
+}
+
+/* Section heading block: gold rule + small label, then a serif heading. */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.section-label::before {
+  content: '';
+  width: 1.75rem;
+  height: 2px;
+  background-color: var(--gold);
+  flex: none;
+}
+
+.section-heading {
+  font-size: clamp(1.75rem, 3.6vw, 2.75rem);
+  margin-top: var(--space-3);
+  max-width: 24ch;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
   padding: 0.8125rem 1.5rem;
   border: 1px solid transparent;
   border-radius: var(--radius);
@@ -118,10 +215,9 @@ select {
   font-weight: 600;
   line-height: 1.2;
   text-align: center;
-  text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease,
-    border-color 0.15s ease;
+  transition: background-color 0.16s ease, color 0.16s ease,
+    border-color 0.16s ease;
 }
 
 .btn:hover {
@@ -129,28 +225,126 @@ select {
 }
 
 .btn--primary {
-  background-color: var(--color-text);
-  border-color: var(--color-text);
-  color: var(--color-bg);
+  background-color: var(--cream);
+  border-color: var(--cream);
+  color: var(--bg);
 }
 
 .btn--primary:hover {
-  background-color: var(--color-text-hover);
-  border-color: var(--color-text-hover);
+  background-color: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg);
 }
 
 .btn--secondary {
   background-color: transparent;
-  border-color: var(--color-text);
-  color: var(--color-text);
+  border-color: var(--cream);
+  color: var(--cream);
 }
 
 .btn--secondary:hover {
-  background-color: var(--color-text);
-  color: var(--color-bg);
+  background-color: var(--cream);
+  color: var(--bg);
+}
+
+/* Used inside the Contact section, which sits on --surface. */
+.btn--on-navy {
+  background-color: var(--cream);
+  border-color: var(--cream);
+  color: var(--bg);
+}
+
+.btn--on-navy:hover {
+  background-color: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg);
+}
+
+.btn--outline-navy {
+  background-color: transparent;
+  border-color: var(--cream);
+  color: var(--cream);
+}
+
+.btn--outline-navy:hover {
+  background-color: var(--cream);
+  color: var(--bg);
+}
+
+/* Text link with a real underline, so state is never colour-only. */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 2px;
+  transition: color 0.16s ease, border-color 0.16s ease;
+}
+
+.link-arrow:hover {
+  color: var(--gold-soft);
+  border-bottom-color: var(--text);
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   Scroll reveal (opt-in, and only when JS is available)
+   ========================================================================== */
+
+.js .reveal > * {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.js .reveal.is-revealed > * {
+  opacity: 1;
+  transform: none;
+}
+
+.js .reveal.is-revealed > *:nth-child(2) {
+  transition-delay: 0.06s;
+}
+
+.js .reveal.is-revealed > *:nth-child(3) {
+  transition-delay: 0.12s;
+}
+
+.js .reveal.is-revealed > *:nth-child(4) {
+  transition-delay: 0.18s;
+}
+
+/* ==========================================================================
+   Skip link
+   ========================================================================== */
+
+.skip-link {
+  position: absolute;
+  left: var(--space-3);
+  top: var(--space-3);
+  z-index: 50;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--cream);
+  color: var(--bg);
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  transform: translateY(-200%);
+  transition: transform 0.16s ease;
+}
+
+.skip-link:focus-visible {
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
@@ -158,5 +352,10 @@ select {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .js .reveal > * {
+    opacity: 1;
+    transform: none;
   }
 }

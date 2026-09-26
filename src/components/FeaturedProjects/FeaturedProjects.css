@@ -1,0 +1,196 @@
+.work__list {
+  margin-top: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vw, 4rem);
+}
+
+.work__item {
+  --cat: var(--cream);
+  position: relative;
+}
+
+.work__item[data-accent='gold'] {
+  --cat: var(--gold);
+}
+
+.work__item[data-accent='terracotta'] {
+  --cat: var(--terracotta);
+}
+
+.work__item[data-accent='green'] {
+  --cat: var(--green);
+}
+
+.work__number {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+
+.work__item[data-accent='terracotta'] .work__number {
+  color: var(--terracotta);
+}
+
+.work__item[data-accent='green'] .work__number {
+  color: var(--green);
+}
+
+.work__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  margin-top: var(--space-2);
+  letter-spacing: -0.01em;
+}
+
+.work__description {
+  margin-top: var(--space-3);
+  max-width: 44ch;
+  color: var(--text-muted);
+}
+
+.work__tech {
+  margin-top: var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.5rem;
+}
+
+.work__tech-item {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text);
+  border: var(--rule-soft);
+  border-left: 3px solid var(--cat);
+  padding: 0.3125rem 0.625rem;
+  background-color: var(--surface);
+}
+
+.work__actions {
+  margin-top: var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* --- 01 Featured: largest treatment, inverted panel, text left --- */
+.work__item[data-layout='featured'] {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+  padding: clamp(1.75rem, 4vw, 3rem);
+  background-color: var(--surface);
+  border: var(--rule);
+  border-top: 4px solid var(--cat);
+}
+
+.work__item[data-layout='featured'] .work__title {
+  font-size: clamp(1.875rem, 3.4vw, 2.75rem);
+}
+
+.work__item[data-layout='featured'] .work__description {
+  font-size: 1.0625rem;
+}
+
+/* --- 02 Horizontal: visual leads on the left, mirrored from 01 --- */
+.work__item[data-layout='horizontal'] {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(1.75rem, 4vw, 3rem);
+  align-items: center;
+  padding-block: clamp(1.75rem, 3vw, 2.5rem);
+  border-top: var(--rule);
+}
+
+.work__item[data-layout='horizontal'] .work__visual {
+  order: -1;
+}
+
+/* --- 03 Card: compact, self-contained, centred content --- */
+.work__item[data-layout='card'] {
+  max-width: 26rem;
+  padding: var(--space-4);
+  background-color: var(--surface);
+  border: var(--rule-soft);
+  border-left: 4px solid var(--cat);
+}
+
+.work__item[data-layout='card'] .work__body {
+  display: flex;
+  flex-direction: column;
+}
+
+.work__item[data-layout='card'] .work__description {
+  font-size: 0.9375rem;
+}
+
+/* --- 04 Minor: single quiet row --- */
+.work__item[data-layout='minor'] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: var(--rule-soft);
+}
+
+.work__item[data-layout='minor'] .work__body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-3);
+  flex: 1 1 20rem;
+}
+
+.work__item[data-layout='minor'] .work__title {
+  font-size: 1.25rem;
+  margin-top: 0;
+}
+
+.work__item[data-layout='minor'] .work__description {
+  flex-basis: 100%;
+  margin-top: 0;
+  font-size: 0.9375rem;
+  max-width: 52ch;
+}
+
+.work__item[data-layout='minor'] .work__actions {
+  margin-top: 0;
+}
+
+@media (max-width: 60rem) {
+  .work__item[data-layout='featured'],
+  .work__item[data-layout='horizontal'] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .work__item[data-layout='horizontal'] .work__visual {
+    order: 0;
+  }
+
+  .work__item[data-layout='card'] {
+    max-width: none;
+  }
+
+  .work__item[data-layout='minor'] .work__body {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 34rem) {
+  .work__item[data-layout='featured'] {
+    padding: var(--space-3);
+  }
+
+  .work__actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
