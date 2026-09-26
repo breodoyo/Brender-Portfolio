@@ -1,13 +1,18 @@
 :root {
-  --color-bg: #0b0d10;
-  --color-surface: #14171c;
-  --color-border: #262b33;
-  --color-text: #e8eaed;
-  --color-text-muted: #9aa1ab;
-  --color-accent: #4f8cff;
+  --color-bg: #f5f6f2;
+  --color-surface: #ebebe3;
+  --color-text: #1b2a4a;
+  --color-text-hover: #2b3d66;
+  --color-text-soft: #525d74;
+  --color-accent: #c98d2e;
+  --color-accent-deep: #8a5e14;
+  --color-border: #424f68;
+  --color-border-soft: #3c4963;
 
   --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
     sans-serif;
+  --font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia,
+    'Times New Roman', serif;
   --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
     monospace;
 
@@ -17,8 +22,10 @@
   --space-4: 2rem;
   --space-5: 4rem;
 
-  --radius: 8px;
+  --radius: 6px;
   --content-width: 72rem;
+  --measure: 34rem;
+  --nav-height: 4.25rem;
 }
 
 *,
@@ -34,6 +41,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -49,6 +57,10 @@ body {
   isolation: isolate;
 }
 
+[id] {
+  scroll-margin-top: calc(var(--nav-height) + var(--space-3));
+}
+
 h1,
 h2,
 h3 {
@@ -57,7 +69,7 @@ h3 {
 }
 
 a {
-  color: var(--color-accent);
+  color: var(--color-text);
   text-decoration: none;
 }
 
@@ -78,6 +90,65 @@ textarea,
 select {
   font: inherit;
   color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 3px;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+/* Page frame: every section sits inside this editorial column. */
+.shell {
+  width: 100%;
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 3rem);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8125rem 1.5rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.btn:hover {
+  text-decoration: none;
+}
+
+.btn--primary {
+  background-color: var(--color-text);
+  border-color: var(--color-text);
+  color: var(--color-bg);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-text-hover);
+  border-color: var(--color-text-hover);
+}
+
+.btn--secondary {
+  background-color: transparent;
+  border-color: var(--color-text);
+  color: var(--color-text);
+}
+
+.btn--secondary:hover {
+  background-color: var(--color-text);
+  color: var(--color-bg);
 }
 
 @media (prefers-reduced-motion: reduce) {

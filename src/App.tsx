@@ -1,9 +1,16 @@
+import About from './components/About'
+import Hero from './components/Hero'
+import Nav from './components/Nav'
+
 function App() {
   return (
-    <main className="app">
-      <h1>Portfolio</h1>
-      <p>Project scaffolded. Content coming soon.</p>
-    </main>
+    <>
+      <Nav />
+      <main id="top">
+        <Hero />
+        <About />
+      </main>
+    </>
   )
 }
 
