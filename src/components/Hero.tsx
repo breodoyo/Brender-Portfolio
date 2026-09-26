@@ -1,36 +1,52 @@
-import "./Hero.css";
+import './Hero.css'
 
-export default function Hero() {
+function Hero() {
   return (
-    <section id="home" className="hero">
-      <div className="hero-inner">
-        <div className="hero-text">
-          <p className="hero-greeting">Hello, It's Me</p>
-          <h1 className="hero-name">Brender Odoyo</h1>
-          <h2 className="hero-role">
-            And I'm a <span className="highlight">Backend Developer</span>
-          </h2>
-          <p className="hero-desc">
+    <section className="hero" aria-labelledby="hero-title">
+      <div className="shell hero__inner">
+        <div className="hero__text">
+          <p className="hero__role">Backend &amp; Full-Stack Developer</p>
+
+          <h1 className="hero__title" id="hero-title">
+            Building reliable software and thoughtful digital experiences.
+          </h1>
+
+          <p className="hero__summary">
             I build web applications and APIs with Go, React, TypeScript, and
-            PostgreSQL, with a strong focus on clean architecture, testing,
-            and solving real-world problems.
+            PostgreSQL, with a strong focus on clean architecture, testing, and
+            solving real-world problems.
           </p>
 
-          <div className="hero-cta">
-            <a href="#work" className="btn-primary">
-              See my work
+          <div className="hero__actions">
+            <a className="btn btn--primary" href="#work">
+              View My Work
             </a>
-            <a href="/resume.pdf" className="btn-ghost">
+            <a className="btn btn--secondary" href="/resume.pdf" download>
               Download CV
             </a>
           </div>
         </div>
 
-        <div className="hero-photo">
-          <div className="glow" />
-          <img src="/Bre-pic.JPG" alt="Brender Odoyo" />
-        </div>
+        <figure className="hero__photo">
+          <div className="hero__photo-frame">
+            <img
+              className="hero__photo-img"
+              src="/Bre-pic.JPG"
+              alt="Brender Odoyo, backend and full-stack developer"
+              width="6000"
+              height="3368"
+            />
+          </div>
+          <figcaption className="hero__photo-caption">
+            Brender Odoyo
+            <span className="hero__photo-caption-role">
+              Backend &amp; Full-Stack Developer
+            </span>
+          </figcaption>
+        </figure>
       </div>
     </section>
-  );
+  )
 }
+
+export default Hero
