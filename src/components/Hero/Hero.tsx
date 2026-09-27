@@ -8,19 +8,6 @@ export default function Hero() {
 
   return (
     <section className="hero" aria-labelledby="hero-heading">
-      {/* Decorative: the name and location are already stated in the copy
-          below, so the portrait carries no information of its own. */}
-      <div className="hero__media" aria-hidden="true">
-        <img
-          className="hero__photo-img"
-          src="/brender-odoyo.jpg"
-          alt=""
-          width={1600}
-          height={898}
-        />
-        <div className="hero__scrim" />
-      </div>
-
       <div className="shell hero__inner reveal" ref={ref}>
         <div className="hero__text">
           <SectionLabel>{site.role}</SectionLabel>
@@ -41,10 +28,25 @@ export default function Hero() {
           </div>
         </div>
 
-        <p className="hero__photo-caption">
-          {site.name}
-          <span className="hero__photo-caption-detail">{site.location}</span>
-        </p>
+        {/* Decorative: the name and location are already stated in the
+            caption below it, so the portrait carries no information. */}
+        <figure className="hero__figure">
+          <div className="hero__media" aria-hidden="true">
+            <img
+              className="hero__photo-img"
+              src="/bree1.jpg"
+              alt=""
+              width={2556}
+              height={3408}
+            />
+            <div className="hero__scrim" />
+          </div>
+
+          <figcaption className="hero__photo-caption">
+            {site.name}
+            <span className="hero__photo-caption-detail">{site.location}</span>
+          </figcaption>
+        </figure>
       </div>
     </section>
   )

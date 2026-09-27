@@ -13,7 +13,7 @@
   padding: var(--space-4);
   background-color: var(--surface);
   border: var(--rule-soft);
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
 }
 
@@ -78,31 +78,4 @@
 .visual__note {
   color: var(--text-muted);
   letter-spacing: 0.02em;
-}
-
-/* Card: shorter canvas. */
-.visual[data-variant='card'] .visual__canvas {
-  aspect-ratio: 16 / 9;
-  padding: var(--space-3);
-}
-
-/* Minor: a single rule instead of a full canvas. */
-.visual[data-variant='minor'] .visual__canvas {
-  aspect-ratio: auto;
-  padding: 0;
-  border: 0;
-  background-color: transparent;
-}
-
-.visual[data-variant='minor'] .visual__accent,
-.visual[data-variant='minor'] .visual__head,
-.visual[data-variant='minor'] .visual__cols {
-  display: none;
-}
-
-.visual[data-variant='minor'] .visual__canvas::after {
-  content: '';
-  display: block;
-  height: 3px;
-  background-color: var(--cat);
 }

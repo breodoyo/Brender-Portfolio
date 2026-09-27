@@ -6,7 +6,10 @@
 export const site = {
   name: 'Brender Odoyo',
   role: 'Backend & Full-Stack Developer',
-  headline: 'Building reliable software and thoughtful digital experiences.',
+  // Explicit line break: the two halves are separate clauses, and a single
+  // max-width cannot produce this break because the second line is the longer
+  // one. Rendered via white-space: pre-line on .hero__heading.
+  headline: "Hi, I'm Brender.\nA Software Developer",
   summary:
     'I build web applications and APIs with Go, React, TypeScript, and PostgreSQL, with a strong focus on clean architecture, testing, and solving real-world problems.',
   email: 'brender.odoyo@example.com',

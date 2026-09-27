@@ -24,7 +24,6 @@ export default function FeaturedProjects() {
             <article
               className="work__item"
               key={project.id}
-              data-layout={project.layout}
               data-accent={project.accent}
             >
               <div className="work__body">
@@ -71,7 +70,6 @@ export default function FeaturedProjects() {
                 <ProjectVisual
                   title={project.title}
                   note={project.visualNote}
-                  layout={project.layout}
                   accent={project.accent}
                 />
               </div>

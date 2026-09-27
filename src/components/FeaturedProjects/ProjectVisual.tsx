@@ -1,10 +1,9 @@
-import type { Accent, ProjectLayout } from '../../data/projects'
+import type { Accent } from '../../data/projects'
 import './ProjectVisual.css'
 
 type ProjectVisualProps = {
   title: string
   note: string
-  layout: ProjectLayout
   accent: Accent
 }
 
@@ -16,11 +15,10 @@ type ProjectVisualProps = {
 export default function ProjectVisual({
   title,
   note,
-  layout,
   accent,
 }: ProjectVisualProps) {
   return (
-    <div className="visual" data-variant={layout} data-accent={accent}>
+    <div className="visual" data-accent={accent}>
       <div className="visual__canvas" aria-hidden="true">
         <div className="visual__accent" />
         <div className="visual__head" />

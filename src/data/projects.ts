@@ -2,8 +2,6 @@ import type { Accent } from './tech'
 
 export type { Accent }
 
-export type ProjectLayout = 'featured' | 'horizontal' | 'card' | 'minor'
-
 export type Project = {
   id: string
   number: string
@@ -13,7 +11,6 @@ export type Project = {
   repo: string
   /** Only set when a live demo exists. The button is hidden when empty. */
   live?: string
-  layout: ProjectLayout
   accent: Accent
   /** Placeholder copy for the visual area. No fake screenshots. */
   visualNote: string
@@ -28,7 +25,6 @@ export const projects: Project[] = [
       'A workflow and work-execution platform designed to help teams organize organizations, users, workflows, and work items in one system.',
     tech: ['Go', 'React', 'PostgreSQL', 'Docker', 'REST APIs'],
     repo: 'https://github.com/breodoyo/niavo',
-    layout: 'featured',
     accent: 'gold',
     visualNote: 'Interface layout placeholder',
   },
@@ -40,7 +36,6 @@ export const projects: Project[] = [
       'A culturally-aware digital wellbeing companion designed around journaling, reflection, breathing exercises, supportive circles, and accessible mental wellbeing experiences.',
     tech: ['Go', 'React', 'TypeScript', 'PostgreSQL', 'AI'],
     repo: 'https://github.com/breodoyo/Soulwe',
-    layout: 'horizontal',
     accent: 'terracotta',
     visualNote: 'Interface layout placeholder',
   },
@@ -52,7 +47,6 @@ export const projects: Project[] = [
       'A web application built around consuming and presenting artist and concert data through a structured backend and frontend experience.',
     tech: [],
     repo: 'https://github.com/breodoyo/groupie-tracker',
-    layout: 'card',
     accent: 'green',
     visualNote: 'Interface layout placeholder',
   },
@@ -65,7 +59,6 @@ export const projects: Project[] = [
       'Placeholder description — add a short summary of what this project does and the problem it solves.',
     tech: [],
     repo: 'https://github.com/breodoyo/tetris-optimizer',
-    layout: 'minor',
     accent: 'navy',
     visualNote: 'Placeholder',
   },
