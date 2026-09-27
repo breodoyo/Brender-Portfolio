@@ -14,12 +14,19 @@ export default function FeaturedProjects() {
       aria-labelledby="work-heading"
     >
       <div className="shell reveal" ref={ref}>
-        <SectionLabel>Featured Work</SectionLabel>
+        <SectionLabel>Featured Projects</SectionLabel>
         <h2 className="section-heading" id="work-heading">
           Projects built to solve real problems.
         </h2>
 
-        <div className="work__list">
+        {/* tabIndex makes the horizontal scroll reachable by keyboard; a
+            scroll container is not focusable by default. */}
+        <div
+          className="work__list"
+          role="group"
+          aria-label="Featured projects, scroll horizontally"
+          tabIndex={0}
+        >
           {projects.map((project) => (
             <article
               className="work__item"

@@ -1,6 +1,6 @@
 /**
  * Site-wide identity and links.
- * TODO: replace `email`, and fill in `devto` / `x` once those profiles exist.
+ * TODO: fill in `devto` / `x` once those profiles exist.
  * Empty links are filtered out of the footer instead of rendering dead hrefs.
  */
 export const site = {
@@ -12,7 +12,7 @@ export const site = {
   headline: "Hi, I'm Brender.\nA Software Developer",
   summary:
     'I build web applications and APIs with Go, React, TypeScript, and PostgreSQL, with a strong focus on clean architecture, testing, and solving real-world problems.',
-  email: 'brender.odoyo@example.com',
+  email: 'brenderjohns2@gmail.com',
   location: 'Kisumu, Kenya',
   year: 2026,
   links: {
@@ -20,7 +20,8 @@ export const site = {
     linkedin: 'https://linkedin.com/in/brender-adhiambo-517737191/',
     devto: '',
     x: '',
-    resume: '/Brender-Odoyo-Resume.pdf',
+    resume:
+      'https://eu.wps.com/cms/docs/d/cbPasmvZJy0uqVOe?platform=pc&refer=copylink',
   },
 }
 
