@@ -3,7 +3,12 @@ import { useReveal } from '../../hooks/useReveal'
 import { articles } from '../../data/articles'
 import './Articles.css'
 
-export default function Articles() {
+type ArticlesProps = {
+  /** Standalone pages need an h1; on the homepage this section is an h2. */
+  headingLevel?: 'h1' | 'h2'
+}
+
+export default function Articles({ headingLevel: Heading = 'h2' }: ArticlesProps) {
   const ref = useReveal<HTMLDivElement>()
 
   return (
@@ -14,9 +19,9 @@ export default function Articles() {
     >
       <div className="shell reveal" ref={ref}>
         <SectionLabel>Articles</SectionLabel>
-        <h2 className="section-heading" id="articles-heading">
+        <Heading className="section-heading" id="articles-heading">
           Writing, learning, and sharing.
-        </h2>
+        </Heading>
 
         <ul className="articles__list">
           {articles.map((article) => (

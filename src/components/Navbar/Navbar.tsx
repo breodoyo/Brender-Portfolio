@@ -1,6 +1,21 @@
 import { useEffect, useState } from 'react'
 import { navItems, site } from '../../data/site'
+import type { NavItem } from '../../data/site'
 import './Navbar.css'
+
+// Set per document: index.html -> "home", journey.html -> "journey", etc.
+const currentPage = document.documentElement.dataset.page ?? 'home'
+const isHome = currentPage === 'home'
+
+/**
+ * On the homepage, section links stay in-page anchors so they keep smooth
+ * scrolling. On a subpage they become "/#section", which the browser resolves
+ * natively. Journey and Articles always point at their own document.
+ */
+function hrefFor(item: NavItem) {
+  if (item.page) return `/${item.page}.html`
+  return isHome ? `#${item.id}` : `/#${item.id}`
+}
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
@@ -19,7 +34,7 @@ export default function Navbar() {
   return (
     <header className="navbar">
       <div className="shell navbar__inner">
-        <a className="navbar__brand" href="#main">
+        <a className="navbar__brand" href={isHome ? '#main' : '/'}>
           {site.name}
         </a>
 
@@ -47,7 +62,10 @@ export default function Navbar() {
               <li key={item.id}>
                 <a
                   className="navbar__link"
-                  href={`#${item.id}`}
+                  href={hrefFor(item)}
+                  aria-current={
+                    item.page === currentPage ? 'page' : undefined
+                  }
                   onClick={() => setOpen(false)}
                 >
                   {item.label}

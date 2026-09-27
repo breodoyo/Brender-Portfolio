@@ -50,6 +50,13 @@
   text-decoration: none;
 }
 
+/* Current page keeps the same gold underline as hover, so the state is
+   carried by a line as well as colour. */
+.navbar__link[aria-current='page'] {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
 .navbar__toggle {
   display: none;
   align-items: center;

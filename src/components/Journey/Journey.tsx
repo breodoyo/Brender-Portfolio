@@ -3,7 +3,12 @@ import { useReveal } from '../../hooks/useReveal'
 import { journey } from '../../data/journey'
 import './Journey.css'
 
-export default function Journey() {
+type JourneyProps = {
+  /** Standalone pages need an h1; on the homepage this section is an h2. */
+  headingLevel?: 'h1' | 'h2'
+}
+
+export default function Journey({ headingLevel: Heading = 'h2' }: JourneyProps) {
   const ref = useReveal<HTMLDivElement>()
 
   return (
@@ -14,9 +19,9 @@ export default function Journey() {
     >
       <div className="shell reveal" ref={ref}>
         <SectionLabel>My Journey</SectionLabel>
-        <h2 className="section-heading" id="journey-heading">
+        <Heading className="section-heading" id="journey-heading">
           A short history of how I got here.
-        </h2>
+        </Heading>
 
         <ol className="journey__list">
           {journey.map((entry, index) => (

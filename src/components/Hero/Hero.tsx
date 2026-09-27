@@ -7,7 +7,20 @@ export default function Hero() {
   const ref = useReveal<HTMLDivElement>()
 
   return (
-    <section className="hero section" aria-labelledby="hero-heading">
+    <section className="hero" aria-labelledby="hero-heading">
+      {/* Decorative: the name and location are already stated in the copy
+          below, so the portrait carries no information of its own. */}
+      <div className="hero__media" aria-hidden="true">
+        <img
+          className="hero__photo-img"
+          src="/brender-odoyo.jpg"
+          alt=""
+          width={1600}
+          height={898}
+        />
+        <div className="hero__scrim" />
+      </div>
+
       <div className="shell hero__inner reveal" ref={ref}>
         <div className="hero__text">
           <SectionLabel>{site.role}</SectionLabel>
@@ -28,21 +41,10 @@ export default function Hero() {
           </div>
         </div>
 
-        <figure className="hero__photo">
-          <div className="hero__photo-frame">
-            <img
-              className="hero__photo-img"
-              src="/brender-odoyo.jpg"
-              alt="Portrait of Brender Odoyo"
-              width={1600}
-              height={898}
-            />
-          </div>
-          <figcaption className="hero__photo-caption">
-            {site.name}
-            <span className="hero__photo-caption-detail">{site.location}</span>
-          </figcaption>
-        </figure>
+        <p className="hero__photo-caption">
+          {site.name}
+          <span className="hero__photo-caption-detail">{site.location}</span>
+        </p>
       </div>
     </section>
   )

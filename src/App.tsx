@@ -1,38 +1,24 @@
-import Navbar from './components/Navbar/Navbar'
+import PageShell from './components/PageShell/PageShell'
 import Hero from './components/Hero/Hero'
 import About from './components/About/About'
 import TechStack from './components/TechStack/TechStack'
 import FeaturedProjects from './components/FeaturedProjects/FeaturedProjects'
-import Journey from './components/Journey/Journey'
 import HowIWork from './components/HowIWork/HowIWork'
-import Articles from './components/Articles/Articles'
 import Resume from './components/Resume/Resume'
 import Contact from './components/Contact/Contact'
-import Footer from './components/Footer/Footer'
 
+// Journey and Articles live on their own pages (/journey.html, /articles.html).
 function App() {
   return (
-    <>
-      <a className="skip-link" href="#main">
-        Skip to content
-      </a>
-
-      <Navbar />
-
-      <main id="main">
-        <Hero />
-        <About />
-        <TechStack />
-        <FeaturedProjects />
-        <Journey />
-        <HowIWork />
-        <Articles />
-        <Resume />
-        <Contact />
-      </main>
-
-      <Footer />
-    </>
+    <PageShell>
+      <Hero />
+      <About />
+      <TechStack />
+      <FeaturedProjects />
+      <HowIWork />
+      <Resume />
+      <Contact />
+    </PageShell>
   )
 }
 

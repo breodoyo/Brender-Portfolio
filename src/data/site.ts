@@ -21,11 +21,20 @@ export const site = {
   },
 }
 
-export const navItems = [
+export type NavPage = 'journey' | 'articles'
+
+export type NavItem = {
+  id: string
+  label: string
+  /** Set when the item is a standalone page rather than a homepage anchor. */
+  page?: NavPage
+}
+
+export const navItems: NavItem[] = [
   { id: 'about', label: 'About' },
   { id: 'work', label: 'Work' },
-  { id: 'journey', label: 'Journey' },
-  { id: 'articles', label: 'Articles' },
+  { id: 'journey', label: 'Journey', page: 'journey' },
+  { id: 'articles', label: 'Articles', page: 'articles' },
   { id: 'resume', label: 'Resume' },
   { id: 'contact', label: 'Contact' },
 ]
