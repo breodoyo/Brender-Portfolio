@@ -37,7 +37,6 @@ export const techCategories: TechCategory[] = [
       'Exploratory Testing',
       'Accessibility Testing',
       'Postman',
-      'WAVE',
       'axe DevTools',
     ],
   },

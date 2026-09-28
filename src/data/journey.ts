@@ -29,7 +29,7 @@ export const journey: JourneyEntry[] = [
   {
     id: 'qa',
     role: 'QA / Software Tester',
-    org: 'Placeholder employer — replace with the real organisation',
+    org: 'Testlio',
     period: '3+ years experience',
     summary:
       'Quality assurance work spanning functional, regression, exploratory, API, and accessibility testing.',
