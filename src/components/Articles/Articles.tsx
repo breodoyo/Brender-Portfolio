@@ -11,6 +11,11 @@ type ArticlesProps = {
 export default function Articles({ headingLevel: Heading = 'h2' }: ArticlesProps) {
   const ref = useReveal<HTMLDivElement>()
 
+  // Article titles sit one level below the section heading. Hardcoding h3 here
+  // skipped a level whenever the section rendered as an h1, and left the
+  // Contact section's h2 following three h3s in the outline.
+  const TitleTag = Heading === 'h1' ? 'h2' : 'h3'
+
   return (
     <section
       className="articles section"
@@ -32,7 +37,9 @@ export default function Articles({ headingLevel: Heading = 'h2' }: ArticlesProps
               </div>
 
               <div className="articles__body">
-                <h3 className="articles__title">{article.title}</h3>
+                <TitleTag className="articles__title">
+                  {article.title}
+                </TitleTag>
                 <p className="articles__description">{article.description}</p>
               </div>
 
