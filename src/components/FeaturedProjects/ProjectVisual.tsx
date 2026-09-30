@@ -55,12 +55,15 @@ export default function ProjectVisual({
         )}
       </div>
 
-      <p className="visual__meta">
-        <span className="visual__name">{title}</span>
-        {/* Only the wireframe needs a caption. Under a real screenshot the
-            note would read as a placeholder label, which is a lie. */}
-        {!image && <span className="visual__note">{note}</span>}
-      </p>
+      {/* Only the wireframe needs a caption. Above the title it would just
+          repeat the project name, and under a real screenshot the note would
+          read as a placeholder label, which is a lie. */}
+      {!image && (
+        <p className="visual__meta">
+          <span className="visual__name">{title}</span>
+          <span className="visual__note">{note}</span>
+        </p>
+      )}
     </div>
   )
 }
