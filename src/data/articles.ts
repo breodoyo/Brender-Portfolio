@@ -1,8 +1,10 @@
 /**
- * Article previews.
- * TODO: replace the placeholder entries below with real published articles.
- * Keep the shape — Category / Title / Description / Date — so nothing else
- * needs to change.
+ * Article summaries for the Articles list.
+ *
+ * These are previews, not the full text: each article is published on Dev.to and
+ * the portfolio only carries the category, title, one-line summary and date.
+ * `href` is optional so a draft can sit in the list without a dead link — while
+ * it is absent the row renders "Not published yet" instead of a link.
  */
 export type Article = {
   id: string
@@ -10,39 +12,36 @@ export type Article = {
   title: string
   description: string
   date: string
-  href: string
-  placeholder: boolean
+  href?: string
 }
 
+/** Newest first. */
 export const articles: Article[] = [
   {
-    id: 'placeholder-1',
+    id: 'chi-for-go-backend',
     category: 'Backend',
-    title: 'Placeholder article title',
+    title: 'Why I Chose Chi for My Go Backend',
     description:
-      'Replace this with a short summary of the article. One or two sentences is enough.',
-    date: 'Coming soon',
-    href: '',
-    placeholder: true,
+      'Why I picked Chi over the other Go routers, and why choosing the right tooling matters as much as writing the code itself.',
+    date: 'Sep 2, 2026',
+    href: 'https://dev.to/breodoyo/why-i-chose-chi-for-my-go-backend-52d6',
   },
   {
-    id: 'placeholder-2',
-    category: 'Testing',
-    title: 'Placeholder article title',
+    id: 'cli-to-docker',
+    category: 'DevOps',
+    title: 'From CLI to Docker: What Three Go Projects Taught Me',
     description:
-      'Replace this with a short summary of the article. One or two sentences is enough.',
-    date: 'Coming soon',
-    href: '',
-    placeholder: true,
+      'How three Go projects grew from a command-line tool into a Dockerized web application, and what each stage taught me.',
+    date: 'Jul 7, 2026',
+    href: 'https://dev.to/breodoyo/-from-cli-to-docker-what-three-go-projects-taught-me-3c4c',
   },
   {
-    id: 'placeholder-3',
-    category: 'Frontend',
-    title: 'Placeholder article title',
+    id: 'learning-go-simplicity',
+    category: 'Go',
+    title: 'Learning Go: The Beauty of Simplicity',
     description:
-      'Replace this with a short summary of the article. One or two sentences is enough.',
-    date: 'Coming soon',
-    href: '',
-    placeholder: true,
+      'Why Go’s straightforward syntax pushed me toward simpler code, and how small targeted exercises built a real foundation.',
+    date: 'Jun 17, 2026',
+    href: 'https://dev.to/breodoyo/learning-go-the-beauty-of-simplicity-5bnn',
   },
 ]

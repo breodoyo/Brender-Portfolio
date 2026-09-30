@@ -1,6 +1,6 @@
 /**
  * Site-wide identity and links.
- * TODO: fill in `devto` / `x` once those profiles exist.
+ * TODO: fill in `x` once that profile exists.
  * Empty links are filtered out of the footer instead of rendering dead hrefs.
  */
 export const site = {
@@ -18,7 +18,7 @@ export const site = {
   links: {
     github: 'https://github.com/breodoyo',
     linkedin: 'https://linkedin.com/in/brender-adhiambo-517737191/',
-    devto: '',
+    devto: 'https://dev.to/breodoyo',
     x: '',
     resume:
       'https://eu.wps.com/cms/docs/d/cbPasmvZJy0uqVOe?platform=pc&refer=copylink',
