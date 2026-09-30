@@ -1,7 +1,8 @@
 /* One horizontal strip. A single row of four would leave roughly 245px per
    card, so the row scrolls instead. Cards are a fixed readable width rather
    than a percentage, which keeps the last card from being cut in half at wide
-   viewports. */
+   viewports. Card width is deliberately not compressed; the height comes out
+   of the visual canvas proportions instead. */
 .work__list {
   margin-top: var(--space-5);
   display: grid;

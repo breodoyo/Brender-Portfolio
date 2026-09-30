@@ -2,6 +2,23 @@ import type { Accent } from './tech'
 
 export type { Accent }
 
+/** A real screenshot of the product interface. */
+export type ProjectImage = {
+  src: string
+  /**
+   * Intrinsic pixel size. CSS stretches the image to the canvas either way, so
+   * these only supply the correct aspect ratio before the stylesheet applies.
+   */
+  width: number
+  height: number
+  /**
+   * Empty string marks the image decorative. Each card already states the
+   * project title and describes what it does, so a non-empty alt would just
+   * repeat that to a screen reader.
+   */
+  alt: string
+}
+
 export type Project = {
   id: string
   number: string
@@ -12,8 +29,13 @@ export type Project = {
   /** Only set when a live demo exists. The button is hidden when empty. */
   live?: string
   accent: Accent
-  /** Placeholder copy for the visual area. No fake screenshots. */
+  /**
+   * Caption for the abstract wireframe. Required because the wireframe always
+   * needs one, but only rendered when there is no `image` to show instead.
+   */
   visualNote: string
+  /** Real product screenshot. Absent renders the abstract wireframe. */
+  image?: ProjectImage
 }
 
 export const projects: Project[] = [
@@ -27,6 +49,7 @@ export const projects: Project[] = [
     repo: 'https://github.com/breodoyo/niavo',
     accent: 'gold',
     visualNote: 'Interface layout placeholder',
+    image: { src: '/niavo-app.png', width: 1366, height: 653, alt: '' },
   },
   {
     id: 'soulwe',
@@ -38,6 +61,7 @@ export const projects: Project[] = [
     repo: 'https://github.com/breodoyo/Soulwe',
     accent: 'terracotta',
     visualNote: 'Interface layout placeholder',
+    image: { src: '/soulwe-web.png', width: 1366, height: 620, alt: '' },
   },
   {
     id: 'groupie-tracker',
@@ -49,6 +73,7 @@ export const projects: Project[] = [
     repo: 'https://github.com/breodoyo/groupie-tracker',
     accent: 'green',
     visualNote: 'Interface layout placeholder',
+    image: { src: '/groupie-tracker.png', width: 1363, height: 662, alt: '' },
   },
   {
     id: 'tetris-optimizer',

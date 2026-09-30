@@ -1,7 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Brender Odoyo">
-  <rect width="32" height="32" fill="#1B2A4A"/>
-  <rect x="7" y="8" width="3" height="16" fill="#C98D2E"/>
-  <rect x="13" y="8" width="12" height="3" fill="#F5F6F2"/>
-  <rect x="13" y="14.5" width="12" height="3" fill="#F5F6F2"/>
-  <rect x="13" y="21" width="8" height="3" fill="#F5F6F2"/>
+  <!-- Monogram: a B built from a stem and two bowls, over a gold rule.
+       Full-bleed square background because browsers mask tab icons to their
+       own shape anyway, so a rounded tile would only lose pixels. -->
+  <rect width="32" height="32" fill="#1B1D21"/>
+  <path fill="#F5F6F2" fill-rule="evenodd" d="
+    M8 4 H17 A4.75 4.75 0 0 1 17 13.5 H8 Z
+    M12.5 6.5 H17 A2 2 0 0 1 17 10.5 H12.5 Z
+    M8 13.5 H18.25 A4.75 4.75 0 0 1 18.25 23 H8 Z
+    M12.5 16 H18.25 A2 2 0 0 1 18.25 20 H12.5 Z"/>
+  <rect x="8" y="25.5" width="15" height="3" fill="#C98D2E"/>
 </svg>

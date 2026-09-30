@@ -214,6 +214,14 @@ ol {
   text-decoration: none;
 }
 
+/* Compact variant for dense rows, such as the Contact actions. Kept at 34px
+   tall so it still clears the WCAG 2.2 minimum target size of 24x24 CSS px. */
+.btn--sm {
+  padding: 0.5625rem 0.875rem;
+  font-size: 0.8125rem;
+  gap: var(--space-1);
+}
+
 .btn--primary {
   background-color: var(--cream);
   border-color: var(--cream);

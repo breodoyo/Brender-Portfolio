@@ -78,6 +78,7 @@ export default function FeaturedProjects() {
                   title={project.title}
                   note={project.visualNote}
                   accent={project.accent}
+                  image={project.image}
                 />
               </div>
             </article>

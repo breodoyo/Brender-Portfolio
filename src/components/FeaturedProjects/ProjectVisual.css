@@ -10,15 +10,43 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
-  padding: var(--space-4);
+  padding: var(--space-3);
   background-color: var(--surface);
   border: var(--rule-soft);
-  aspect-ratio: 16 / 9;
+  /* Wide and shallow: the card keeps its full width, and nearly all of the
+     height saving comes from cropping this placeholder rather than from
+     squeezing the text column. */
+  aspect-ratio: 24 / 10;
   overflow: hidden;
 }
 
 .visual[data-accent='gold'] .visual__canvas {
   --cat: var(--gold);
+}
+
+/* Screenshot variant. The canvas background is what shows through beside the
+   letterboxed image, and .work__item is also --surface, so without stepping
+   down to --surface-deep the gutters around the screenshot would be invisible
+   and the image would look like it was floating loose on the card.
+
+   padding and gap are zeroed because they exist to space the wireframe's
+   blocks. Inherited, they inset the image by 16px on all four sides, which
+   `contain` then shrinks further — that made the screenshots render at roughly
+   two thirds of the canvas they had room for. */
+.visual__canvas--image {
+  background-color: var(--surface-deep);
+  padding: 0;
+  gap: 0;
+}
+
+/* `contain` keeps the whole screenshot visible rather than cropping real
+   interface off the bottom. The canvas keeps aspect-ratio 24 / 10 regardless,
+   so swapping in screenshots does not change card height. */
+.visual__canvas img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .visual__accent {

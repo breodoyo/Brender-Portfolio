@@ -25,11 +25,11 @@ export default function Contact() {
         </div>
 
         <div className="contact__actions">
-          <a className="btn btn--on-navy" href={`mailto:${site.email}`}>
+          <a className="btn btn--on-navy btn--sm" href={`mailto:${site.email}`}>
             Email Me
           </a>
           <a
-            className="btn btn--outline-navy"
+            className="btn btn--outline-navy btn--sm"
             href={site.links.github}
             target="_blank"
             rel="noreferrer noopener"
@@ -37,7 +37,7 @@ export default function Contact() {
             GitHub
           </a>
           <a
-            className="btn btn--outline-navy"
+            className="btn btn--outline-navy btn--sm"
             href={site.links.linkedin}
             target="_blank"
             rel="noreferrer noopener"
