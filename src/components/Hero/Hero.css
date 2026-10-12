@@ -67,6 +67,107 @@
   white-space: pre-line;
 }
 
+/* The typewriter keeps the finished headline in a hidden sizer so the reveal
+   never re-measures and shifts the layout: the live layer overlays the same
+   box and wraps identically because it shares the size and white-space. The
+   box spans the heading width (rather than shrink-fitting the longest line)
+   so the caret keeps room at the end of the last line instead of wrapping
+   onto a trailing line of its own. */
+.hero__heading-visual {
+  position: relative;
+  display: block;
+}
+
+.hero__heading-sizer {
+  visibility: hidden;
+}
+
+.hero__heading-live {
+  position: absolute;
+  inset: 0;
+}
+
+.hero__cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 0.08em;
+  vertical-align: -0.14em;
+  background-color: var(--gold);
+  animation: hero-cursor-blink 1.1s steps(1, end) infinite;
+}
+
+@keyframes hero-cursor-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  99% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Rotating technology line: a static prefix plus one name at a time. The
+   fixed-width box reserves room for the longest name (TypeScript), so the
+   rotation never changes the line length or shifts the layout below it. */
+.hero__tech {
+  margin-top: var(--space-3);
+  font-family: var(--font-serif);
+  font-size: clamp(1.125rem, 2.2vw, 1.375rem);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--text-muted);
+}
+
+.hero__tech-prefix {
+  margin-right: 0.35em;
+}
+
+.hero__tech-rotate {
+  display: inline-block;
+  width: 12ch;
+  overflow: hidden;
+  vertical-align: baseline;
+  color: var(--gold);
+  font-style: italic;
+}
+
+.hero__tech-word {
+  display: inline-block;
+  animation: hero-tech-cycle 2.6s ease forwards;
+}
+
+/* Fade-and-slide in, hold for a comfortable read, fade-and-slide out. The
+   duration matches the swap interval in useRotatingTech, so each new name
+   starts its cycle exactly as the previous one exits. */
+@keyframes hero-tech-cycle {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  85% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
 .hero__summary {
   margin-top: var(--space-4);
   max-width: 48ch;
@@ -79,20 +180,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-}
-
-.hero__photo-caption {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--text);
-}
-
-.hero__photo-caption-detail {
-  font-weight: 400;
-  color: var(--text-muted);
 }
 
 @media (max-width: 60rem) {
@@ -119,5 +206,17 @@
     flex-direction: column;
     align-items: stretch;
     margin-top: var(--space-4);
+  }
+}
+
+/* Reduced-motion users still see the finished headline (the hook skips the
+   timer), but the caret stops blinking so there is no residual animation. */
+@media (prefers-reduced-motion: reduce) {
+  .hero__cursor {
+    animation: none;
+  }
+
+  .hero__tech-word {
+    animation: none;
   }
 }

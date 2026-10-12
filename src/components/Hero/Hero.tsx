@@ -1,20 +1,45 @@
-import SectionLabel from '../ui/SectionLabel'
 import { useReveal } from '../../hooks/useReveal'
+import { useRotatingTech } from '../../hooks/useRotatingTech'
+import { useTypewriter } from '../../hooks/useTypewriter'
 import { site } from '../../data/site'
 import './Hero.css'
 
+const heroTechnologies = ['Go', 'React', 'TypeScript', 'PostgreSQL']
+
 export default function Hero() {
   const ref = useReveal<HTMLDivElement>()
+  const typedHeadline = useTypewriter(site.headline)
+  const { tech, index } = useRotatingTech(heroTechnologies)
 
   return (
     <section className="hero" aria-labelledby="hero-heading">
       <div className="shell hero__inner reveal" ref={ref}>
         <div className="hero__text">
-          <SectionLabel>{site.role}</SectionLabel>
-
           <h1 className="hero__heading" id="hero-heading">
-            {site.headline}
+            {/* Screen readers get the complete headline once; the animated
+                layer below is decorative and never announced piecemeal. */}
+            <span className="visually-hidden">{site.headline}</span>
+            <span className="hero__heading-visual" aria-hidden="true">
+              {/* Hidden at full width so typing never collapses the title. */}
+              <span className="hero__heading-sizer">{site.headline}</span>
+              <span className="hero__heading-live">
+                {typedHeadline}
+                <span className="hero__cursor" />
+              </span>
+            </span>
           </h1>
+
+          <p className="hero__tech">
+            <span className="hero__tech-prefix">Building with</span>{' '}
+            <span className="hero__tech-rotate" aria-hidden="true">
+              <span className="hero__tech-word" key={index}>
+                {tech}
+              </span>
+            </span>
+            <span className="visually-hidden">
+              {heroTechnologies.join(', ')}
+            </span>
+          </p>
 
           <p className="hero__summary">{site.summary}</p>
 
@@ -28,8 +53,8 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Decorative: the name and location are already stated in the
-            caption below it, so the portrait carries no information. */}
+        {/* Decorative: the name is already stated in the headline, so the
+            portrait carries no information. */}
         <figure className="hero__figure">
           <div className="hero__media" aria-hidden="true">
             <img
@@ -41,11 +66,6 @@ export default function Hero() {
             />
             <div className="hero__scrim" />
           </div>
-
-          <figcaption className="hero__photo-caption">
-            {site.name}
-            <span className="hero__photo-caption-detail">{site.location}</span>
-          </figcaption>
         </figure>
       </div>
     </section>
