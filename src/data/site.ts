@@ -13,7 +13,6 @@ export const site = {
   summary:
     'I build web applications and APIs with Go, React, TypeScript, and PostgreSQL, with a strong focus on clean architecture, testing, and solving real-world problems.',
   email: 'brenderjohns2@gmail.com',
-  location: 'Kisumu, Kenya',
   year: 2026,
   links: {
     github: 'https://github.com/breodoyo',

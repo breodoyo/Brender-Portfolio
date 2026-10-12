@@ -75,16 +75,4 @@ export const projects: Project[] = [
     visualNote: 'Interface layout placeholder',
     image: { src: '/groupie-tracker.png', width: 1363, height: 662, alt: '' },
   },
-  {
-    id: 'tetris-optimizer',
-    number: '04',
-    title: 'Tetris Optimizer',
-    // TODO: replace with a real one-line description.
-    description:
-      'Placeholder description — add a short summary of what this project does and the problem it solves.',
-    tech: [],
-    repo: 'https://github.com/breodoyo/tetris-optimizer',
-    accent: 'navy',
-    visualNote: 'Placeholder',
-  },
 ]
