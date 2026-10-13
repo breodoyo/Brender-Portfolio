@@ -14,7 +14,7 @@ export default function About() {
     >
       <div className="shell about__inner reveal" ref={ref}>
         <div className="about__lead">
-          <SectionLabel>About</SectionLabel>
+          <SectionLabel>About me</SectionLabel>
 
           <h2 className="about__heading" id="about-heading">
             I build software by understanding the problem first.

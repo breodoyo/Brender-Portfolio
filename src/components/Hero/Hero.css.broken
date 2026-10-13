@@ -1,0 +1,222 @@
+﻿/* Two-column hero: copy on the left, portrait in its own column on the right. */
+.hero {
+  display: flex;
+  align-items: center;
+  min-height: clamp(30rem, 76vh, 44rem);
+  padding-block: var(--section-pad);
+}
+
+.hero__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.68fr);
+  align-items: center;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  width: 100%;
+}
+
+.hero__text {
+  min-width: 0;
+}
+
+.hero__figure {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.hero__media {
+  position: relative;
+  /* Matches the 3:4 source, so object-fit: cover has nothing left to crop.
+     No radius, no border, no mask â€” a clean, edgeless rectangle. */
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+
+.hero__photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Technology badges float loosely in the hero's background, off the portrait
+   by a clear gap. Heights, horizontal slots, poke amounts, and sizes all
+   differ from badge to badge, so none are mirrored or aligned into a ring â€”
+   they read as a few specks drifting independently in the open space. Pokes
+   stay inside the shell padding / gutter so nothing clips or overflows. */
+.hero__badges {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  pointer-events: none;
+}
+
+.hero__badge { animation: none; opacity: 1; transform: none; }
+
+.hero__badge svg {
+  width: 56%;
+  height: 56%;
+  fill: currentColor;
+}
+/* Gentle fade-in once, then a slow drift. Three variants give each badge its
+   own direction (up, down, diagonal) and every badge a distinct duration and
+   delay, so nothing moves in sync. */
+@keyframes hero-badge-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-badge-float-a {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes hero-badge-float-b {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(5px) translateX(2px);
+  }
+}
+
+@keyframes hero-badge-float-c {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translate(-3px, -4px);
+  }
+}
+
+/* pre-line turns the \n in site.headline into a real line break. A plain
+   max-width cannot produce that break, because the second clause is the longer
+   one: anything wide enough for "A Software Developer" also swallows the
+   trailing "A" onto the first line. 24ch is sized to hold the longer clause
+   with slack at the font ceiling, and it scales with the clamp so the clause
+   never re-wraps on the way down. Phones are too narrow for the second clause
+   and reflow it, which is unavoidable. */
+.hero__heading {
+  font-size: clamp(2.25rem, 4.8vw, 3.25rem);
+  line-height: 1.08;
+  margin-top: var(--space-4);
+  max-width: 24ch;
+  white-space: pre-line;
+}
+
+/* The typewriter keeps the finished headline in a hidden sizer so the reveal
+   never re-measures and shifts the layout: the live layer overlays the same
+   box and wraps identically because it shares the size and white-space. The
+   box spans the heading width (rather than shrink-fitting the longest line)
+   so the caret keeps room at the end of the last line instead of wrapping
+   onto a trailing line of its own. */
+.hero__heading-visual {
+  position: relative;
+  display: block;
+}
+
+.hero__heading-sizer {
+  visibility: hidden;
+}
+
+.hero__heading-live {
+  position: absolute;
+  inset: 0;
+}
+
+.hero__cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 0.08em;
+  vertical-align: -0.14em;
+  background-color: var(--gold);
+  animation: hero-cursor-blink 1.1s steps(1, end) infinite;
+}
+
+@keyframes hero-cursor-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  99% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.hero__summary {
+  margin-top: var(--space-4);
+  max-width: 48ch;
+  font-size: 1.0625rem;
+  color: var(--text);
+}
+
+.hero__actions {
+  margin-top: var(--space-5);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+@media (max-width: 60rem) {
+  .hero__inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
+  }
+
+  .hero__figure {
+    max-width: 24rem;
+  }
+}
+
+@media (max-width: 34rem) {
+  .hero {
+    min-height: clamp(24rem, 58vh, 34rem);
+  }
+
+  .hero__summary {
+    font-size: 1rem;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: var(--space-4);
+  }
+
+  /* Phones: keep only the three badges floating above the portrait; the side
+     and below badges would crowd the stacked layout or poke past the shell
+     padding, so hide them rather than risk horizontal scroll. */
+  .hero__badge {
+    --badge-size: 2rem;
+  }
+}
+
+/* Reduced-motion users still see the finished headline (the hook skips the
+   timer), but the caret stops blinking so there is no residual animation. */
+@media (prefers-reduced-motion: reduce) { .hero__cursor { animation: none; } .hero__badge { animation: none; opacity: 1; transform: none; } }\r\n}

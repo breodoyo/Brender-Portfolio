@@ -1,15 +1,25 @@
 import { useReveal } from '../../hooks/useReveal'
-import { useRotatingTech } from '../../hooks/useRotatingTech'
 import { useTypewriter } from '../../hooks/useTypewriter'
 import { site } from '../../data/site'
+import BrandBadges from './BrandBadges'
+import type { BrandName } from './brands'
 import './Hero.css'
 
-const heroTechnologies = ['Go', 'React', 'TypeScript', 'PostgreSQL']
+/** Irregular scattered badges around the portrait - no grid, no symmetry, no orbit. */
+const heroBadges: readonly { id: BrandName; left?: string; top?: string; right?: string; bottom?: string; delay: number; className?: string }[] = [
+  { id: 'react', left: '-14%', top: '12%', delay: 0, className: 'pos-react' },
+  { id: 'typescript', left: '50%', top: '-14%', delay: 0.3, className: 'pos-typescript' },
+  { id: 'go', right: '-14%', top: '18%', delay: 0.7, className: 'pos-go' },
+  { id: 'postgresql', delay: 1.4, className: 'pos-postgresql' },
+  { id: 'docker', left: '-16%', bottom: '16%', delay: 1.0, className: 'pos-docker' },
+  { id: 'git', delay: 1.8, className: 'pos-git' },
+  { id: 'vscode', right: '-16%', bottom: '22%', delay: 2.1, className: 'pos-vscode' },
+  { id: 'postman', delay: 2.5, className: 'pos-postman' },
+]
 
 export default function Hero() {
   const ref = useReveal<HTMLDivElement>()
   const typedHeadline = useTypewriter(site.headline)
-  const { tech, index } = useRotatingTech(heroTechnologies)
 
   return (
     <section className="hero" aria-labelledby="hero-heading">
@@ -29,18 +39,6 @@ export default function Hero() {
             </span>
           </h1>
 
-          <p className="hero__tech">
-            <span className="hero__tech-prefix">Building with</span>{' '}
-            <span className="hero__tech-rotate" aria-hidden="true">
-              <span className="hero__tech-word" key={index}>
-                {tech}
-              </span>
-            </span>
-            <span className="visually-hidden">
-              {heroTechnologies.join(', ')}
-            </span>
-          </p>
-
           <p className="hero__summary">{site.summary}</p>
 
           <div className="hero__actions">
@@ -56,15 +54,17 @@ export default function Hero() {
         {/* Decorative: the name is already stated in the headline, so the
             portrait carries no information. */}
         <figure className="hero__figure">
-          <div className="hero__media" aria-hidden="true">
-            <img
-              className="hero__photo-img"
-              src="/bree1.jpg"
-              alt=""
-              width={2556}
-              height={3408}
-            />
-            <div className="hero__scrim" />
+          <div className="hero-visual" aria-hidden="true">
+            <div className="hero__media">
+              <img
+                className="hero__photo-img"
+                src="/bree2.png"
+                alt=""
+                width={433}
+                height={577}
+              />
+            </div>
+            <BrandBadges items={heroBadges} />
           </div>
         </figure>
       </div>
