@@ -1,4 +1,3 @@
-import SectionLabel from '../ui/SectionLabel'
 import { useReveal } from '../../hooks/useReveal'
 import { site } from '../../data/site'
 import './Resume.css'
@@ -15,7 +14,6 @@ export default function Resume() {
       <div className="shell reveal" ref={ref}>
         <div className="resume__panel">
           <div className="resume__copy">
-            <SectionLabel>Resume</SectionLabel>
             <h2 className="section-heading" id="resume-heading">
               Experience in one page.
             </h2>

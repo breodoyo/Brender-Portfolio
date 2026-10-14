@@ -1,4 +1,3 @@
-import SectionLabel from '../ui/SectionLabel'
 import { useReveal } from '../../hooks/useReveal'
 import { techCategories } from '../../data/tech'
 import './TechStack.css'
@@ -13,7 +12,6 @@ export default function TechStack() {
       aria-labelledby="tech-heading"
     >
       <div className="shell reveal" ref={ref}>
-        <SectionLabel>Technical Toolkit</SectionLabel>
         <h2 className="section-heading" id="tech-heading">
           Tools I use to build and test software.
         </h2>

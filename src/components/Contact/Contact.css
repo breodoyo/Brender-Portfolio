@@ -1,36 +1,30 @@
-/* Contact sits one step lighter than the page. That shift alone is only
-   1.12:1, so the hairline does the work of marking where the band starts.
-
-   This band is deliberately tighter than the rest of the page. It holds one
-   short pitch and three links, and at the full --section-pad it read as a
-   full section rather than a closing call to action. The padding is overridden
-   locally rather than by moving the shared token, so the other sections keep
-   their rhythm. */
-/* The two-class selector is load-bearing. .contact also carries .section, and
-   the shared .section rule sets the same padding at the same specificity.
-   Vite concatenates global.css after the component stylesheets, so .section
-   lands later in the output file and wins on source order; without this bump
-   the tighter padding below is silently ignored. */
 .contact.section {
-  background-color: var(--surface);
-  color: var(--text);
-  padding-block: clamp(1.75rem, 3vw, 2.5rem);
-  border-block: var(--rule-soft);
+  padding-block: 0;
+}
+
+.contact__band {
+  width: 100%;
+  background: #262a31;
+  clip-path: polygon(0 80px, 100% 0, 100% 100%, 0 100%);
+  padding-top: 8rem;
 }
 
 .contact__inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-  gap: clamp(1.5rem, 3vw, 2.5rem);
+  max-width: 1100px;
+  margin-inline: auto;
+  padding-inline: 24px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
+  gap: clamp(2rem, 4vw, 3rem);
+  padding-bottom: clamp(1.5rem, 3vw, 2rem);
 }
 
-.contact__label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--gold);
+.contact__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .contact__heading {
@@ -38,9 +32,9 @@
   font-size: clamp(1.5rem, 3.2vw, 2.25rem);
   line-height: 1.12;
   letter-spacing: -0.02em;
-  margin-top: var(--space-2);
   color: var(--text);
-  max-width: 28ch;
+  max-width: 52ch;
+  margin-top: 0;
 }
 
 .contact__heading-accent {
@@ -55,17 +49,23 @@
   color: var(--text-muted);
 }
 
-/* A row, not a stack. Three stacked buttons cost about 120px of height that
-   this band does not need; side by side they fit the column comfortably at
-   the compact size, and they wrap on their own if they ever stop fitting. */
 .contact__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
+  justify-content: center;
+  gap: var(--space-3);
 }
 
-@media (max-width: 60rem) {
-  .contact__inner {
-    grid-template-columns: minmax(0, 1fr);
+.contact__divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  margin-block: clamp(1rem, 3vw, 1.5rem);
+}
+
+@media (max-width: 640px) {
+  .contact__band {
+    clip-path: polygon(0 40px, 100% 0, 100% 100%, 0 100%);
+    padding-top: 5rem;
   }
 }

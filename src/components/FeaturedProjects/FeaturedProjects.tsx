@@ -1,4 +1,3 @@
-import SectionLabel from '../ui/SectionLabel'
 import ProjectVisual from './ProjectVisual'
 import { useReveal } from '../../hooks/useReveal'
 import { projects } from '../../data/projects'
@@ -14,7 +13,6 @@ export default function FeaturedProjects() {
       aria-labelledby="work-heading"
     >
       <div className="shell reveal" ref={ref}>
-        <SectionLabel>Featured Projects</SectionLabel>
         <h2 className="section-heading" id="work-heading">
           Projects built to solve real problems.
         </h2>
