@@ -17,6 +17,12 @@ export type ProjectImage = {
    * repeat that to a screen reader.
    */
   alt: string
+  /**
+   * Optional `object-position` override for screenshots wider than the 16 / 10
+   * frame. Defaults to `top` in ProjectVisual.css; anchoring a wide screenshot
+   * to the left keeps its headline in view while the right side is cropped.
+   */
+  objectPosition?: string
 }
 
 export type Project = {
@@ -40,20 +46,8 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    id: 'niavo',
-    number: '01',
-    title: 'Niavo',
-    description:
-      'A workflow and work-execution platform designed to help teams organize organizations, users, workflows, and work items in one system.',
-    tech: ['Go', 'React', 'PostgreSQL', 'Docker', 'REST APIs'],
-    repo: 'https://github.com/breodoyo/niavo',
-    accent: 'gold',
-    visualNote: 'Interface layout placeholder',
-    image: { src: '/niavo-app.png', width: 1366, height: 653, alt: '' },
-  },
-  {
     id: 'soulwe',
-    number: '02',
+    number: '01',
     title: 'Soulwe',
     description:
       'A culturally-aware digital wellbeing companion designed around journaling, reflection, breathing exercises, supportive circles, and accessible mental wellbeing experiences.',
@@ -61,7 +55,19 @@ export const projects: Project[] = [
     repo: 'https://github.com/breodoyo/Soulwe',
     accent: 'terracotta',
     visualNote: 'Interface layout placeholder',
-    image: { src: '/soulwe-web.png', width: 1366, height: 620, alt: '' },
+    image: { src: '/soulwe-web.png', width: 1366, height: 620, alt: '', objectPosition: 'left top' },
+  },
+  {
+    id: 'niavo',
+    number: '02',
+    title: 'Niavo',
+    description:
+      'A workflow and work-execution platform designed to help teams organize organizations, users, workflows, and work items in one system.',
+    tech: ['Go', 'React', 'PostgreSQL', 'Docker', 'REST APIs'],
+    repo: 'https://github.com/breodoyo/niavo',
+    accent: 'gold',
+    visualNote: 'Interface layout placeholder',
+    image: { src: '/niavo-app.png', width: 1366, height: 653, alt: '', objectPosition: 'center 30%' },
   },
   {
     id: 'groupie-tracker',
@@ -73,6 +79,6 @@ export const projects: Project[] = [
     repo: 'https://github.com/breodoyo/groupie-tracker',
     accent: 'green',
     visualNote: 'Interface layout placeholder',
-    image: { src: '/groupie-tracker.png', width: 1363, height: 662, alt: '' },
+    image: { src: '/groupie-tracker.png', width: 1363, height: 662, alt: '', objectPosition: 'left top' },
   },
 ]

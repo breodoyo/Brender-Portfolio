@@ -202,6 +202,40 @@ ol {
   max-width: 24ch;
 }
 
+/* Centered label with a hairline on each side, opening a section. Shared by
+   the Projects and Resume sections so the two always match. */
+.ruled-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.ruled-label::before,
+.ruled-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.14);
+}
+
+/* The label owns the gap to a heading that follows it directly. */
+.ruled-label + .section-heading {
+  margin-top: 0;
+}
+
+@media (max-width: 640px) {
+  .ruled-label {
+    gap: 0.75rem;
+  }
+}
+
 /* ==========================================================================
    Buttons
    ========================================================================== */

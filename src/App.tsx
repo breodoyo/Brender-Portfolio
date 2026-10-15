@@ -1,5 +1,6 @@
 import PageShell from './components/PageShell/PageShell'
 import Hero from './components/Hero/Hero'
+import LogoMarquee from './components/LogoMarquee/LogoMarquee'
 import About from './components/About/About'
 import TechStack from './components/TechStack/TechStack'
 import FeaturedProjects from './components/FeaturedProjects/FeaturedProjects'
@@ -12,6 +13,7 @@ function App() {
   return (
     <PageShell>
       <Hero />
+      <LogoMarquee />
       <About />
       <TechStack />
       <FeaturedProjects />

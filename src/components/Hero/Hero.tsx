@@ -1,21 +1,7 @@
 import { useReveal } from '../../hooks/useReveal'
 import { useTypewriter } from '../../hooks/useTypewriter'
 import { site } from '../../data/site'
-import BrandBadges from './BrandBadges'
-import type { BrandName } from './brands'
 import './Hero.css'
-
-/** Irregular scattered badges around the portrait - no grid, no symmetry, no orbit. */
-const heroBadges: readonly { id: BrandName; left?: string; top?: string; right?: string; bottom?: string; delay: number; className?: string }[] = [
-  { id: 'react', left: '-14%', top: '12%', delay: 0, className: 'pos-react' },
-  { id: 'typescript', left: '50%', top: '-14%', delay: 0.3, className: 'pos-typescript' },
-  { id: 'go', right: '-14%', top: '18%', delay: 0.7, className: 'pos-go' },
-  { id: 'postgresql', delay: 1.4, className: 'pos-postgresql' },
-  { id: 'docker', left: '-16%', bottom: '16%', delay: 1.0, className: 'pos-docker' },
-  { id: 'git', delay: 1.8, className: 'pos-git' },
-  { id: 'vscode', right: '-16%', bottom: '22%', delay: 2.1, className: 'pos-vscode' },
-  { id: 'postman', delay: 2.5, className: 'pos-postman' },
-]
 
 export default function Hero() {
   const ref = useReveal<HTMLDivElement>()
@@ -54,17 +40,14 @@ export default function Hero() {
         {/* Decorative: the name is already stated in the headline, so the
             portrait carries no information. */}
         <figure className="hero__figure">
-          <div className="hero-visual" aria-hidden="true">
-            <div className="hero__media">
-              <img
-                className="hero__photo-img"
-                src="/bree2.png"
-                alt=""
-                width={433}
-                height={577}
-              />
-            </div>
-            <BrandBadges items={heroBadges} />
+          <div className="hero__media">
+            <img
+              className="hero__photo-img"
+              src="/bree2.png"
+              alt=""
+              width={433}
+              height={577}
+            />
           </div>
         </figure>
       </div>

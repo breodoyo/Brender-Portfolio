@@ -33,6 +33,7 @@ export default function ProjectVisual({
             width={image.width}
             height={image.height}
             decoding="async"
+            style={{ objectPosition: image.objectPosition }}
           />
         ) : (
           <>

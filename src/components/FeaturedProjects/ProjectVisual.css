@@ -33,6 +33,9 @@
   padding: 0;
   gap: 0;
   aspect-ratio: 16 / 10;
+  /* Mirrors the card's radius so the screenshot corners match it. */
+  border-radius: var(--radius);
+  overflow: hidden;
 }
 
 /* 16 / 10 canvas with `cover` and a top anchor: the screenshot always fills

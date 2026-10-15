@@ -5,7 +5,7 @@
   min-height: clamp(30rem, 76vh, 44rem);
   padding-block: var(--section-pad);
   padding-top: 3rem;
-  padding-bottom: 2rem;
+  padding-bottom: 2.5rem;
 }
 
 .hero__inner {
@@ -25,14 +25,13 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
   min-width: 0;
 }
 
 .hero__media {
   position: relative;
   /* Matches the 3:4 source, so object-fit: cover has nothing left to crop.
-     No radius, no border, no mask â€” a clean, edgeless rectangle. */
+     No radius, no border, no mask — a clean, edgeless rectangle. */
   aspect-ratio: 3 / 4;
   overflow: hidden;
 }
@@ -43,73 +42,6 @@
   object-fit: cover;
   mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-}
-
-/* Technology badges float loosely in the hero's background, off the portrait
-   by a clear gap. Heights, horizontal slots, poke amounts, and sizes all
-   differ from badge to badge, so none are mirrored or aligned into a ring â€”
-   they read as a few specks drifting independently in the open space. Pokes
-   stay inside the shell padding / gutter so nothing clips or overflows. */
-.hero__badges {
-  position: absolute;
-  inset: 0;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  pointer-events: none;
-}
-
-.hero__badge { animation: none; opacity: 1; transform: none; }
-
-.hero__badge svg {
-  width: 56%;
-  height: 56%;
-  fill: currentColor;
-}
-/* Gentle fade-in once, then a slow drift. Three variants give each badge its
-   own direction (up, down, diagonal) and every badge a distinct duration and
-   delay, so nothing moves in sync. */
-@keyframes hero-badge-in {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes hero-badge-float-a {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-6px);
-  }
-}
-
-@keyframes hero-badge-float-b {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(5px) translateX(2px);
-  }
-}
-
-@keyframes hero-badge-float-c {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translate(-3px, -4px);
-  }
 }
 
 /* pre-line turns the \n in site.headline into a real line break, so "Hi, I'm
@@ -211,90 +143,12 @@
     align-items: stretch;
     margin-top: var(--space-4);
   }
-
-  /* Phones: keep only the three badges floating above the portrait; the side
-     and below badges would crowd the stacked layout or poke past the shell
-     padding, so hide them rather than risk horizontal scroll. */
-  .hero__badge {
-    --badge-size: 1.1rem;
-  }
-  .tech-chip {
-    width: 44px;
-    height: 44px;
-  }
-  .pos-react      { top: 6%;  bottom: auto; left: -2%;  right: auto; }
-  .pos-docker     { top: 28%; bottom: auto; left: -2%;  right: auto; }
-  .pos-postgresql { top: 50%; bottom: auto; left: -2%;  right: auto; }
-  .pos-git        { top: 72%; bottom: auto; left: -2%;  right: auto; }
-  .pos-typescript { top: 8%;  bottom: auto; right: -2%; left: auto; }
-  .pos-go         { top: 29%; bottom: auto; right: -2%; left: auto; width: 60px; height: 44px; }
-  .pos-vscode     { top: 51%; bottom: auto; right: -2%; left: auto; }
-  .pos-postman    { top: 73%; bottom: auto; right: -2%; left: auto; }
 }
 
 /* Reduced-motion users still see the finished headline (the hook skips the
    timer), but the caret stops blinking so there is no residual animation. */
-
-@media (prefers-reduced-motion: reduce) { .hero__cursor { animation: none; } .hero__badge { animation: none; opacity: 1; transform: none; } .tech-chip { animation: none; transform: none; } }
-
-.hero-visual {
-  position: relative;
-  overflow: visible;
-  margin-top: 3rem;
-}
-
-.tech-chip {
-  position: absolute;
-  width: 56px;
-  height: 56px;
-  border-radius: 12px;
-  background-color: #1b1d22;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 40px -20px rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
-  will-change: transform;
-}
-
-.tech-chip img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-.pos-go.tech-chip {
-  overflow: visible;
-}
-
-.pos-go.tech-chip img {
-  width: 100%;
-  height: 100%;
-  transform: scale(1.8);
-  transform-origin: center;
-}
-
-.hero__badge--float {
-  animation: tech-chip-float 4s ease-in-out infinite;
-}
-
-@keyframes tech-chip-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
+@media (prefers-reduced-motion: reduce) {
+  .hero__cursor {
+    animation: none;
   }
 }
-
-.pos-react      { top: 6%;  bottom: auto; left: -14%; right: auto; }
-.pos-docker     { top: 28%; bottom: auto; left: -8%;  right: auto; }
-.pos-postgresql { top: 50%; bottom: auto; left: -16%; right: auto; }
-.pos-git        { top: 72%; bottom: auto; left: -9%;  right: auto; }
-.pos-typescript { top: 8%;  bottom: auto; right: -8%;  left: auto; }
-.pos-go         { top: 29%; bottom: auto; right: -14%; left: auto; width: 76px; height: 56px; }
-.pos-vscode     { top: 51%; bottom: auto; right: -9%;  left: auto; }
-.pos-postman    { top: 73%; bottom: auto; right: -15%; left: auto; }
