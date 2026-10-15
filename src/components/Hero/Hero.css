@@ -112,13 +112,12 @@
   }
 }
 
-/* pre-line turns the \n in site.headline into a real line break. A plain
-   max-width cannot produce that break, because the second clause is the longer
-   one: anything wide enough for "A Software Developer" also swallows the
-   trailing "A" onto the first line. 24ch is sized to hold the longer clause
-   with slack at the font ceiling, and it scales with the clamp so the clause
-   never re-wraps on the way down. Phones are too narrow for the second clause
-   and reflow it, which is unavoidable. */
+/* pre-line turns the \n in site.headline into a real line break, so "Hi, I'm
+   Brender." always keeps its own first line. The second clause is longer than
+   the 24ch ceiling at every breakpoint, so it wraps onto a second line; every
+   word in it is narrower than the column, so nothing overflows sideways. The
+   cap still guards the line length at the font ceiling, and it scales with the
+   clamp so the wrap point stays stable on the way down. */
 .hero__heading {
   font-size: clamp(2.25rem, 4.8vw, 3.25rem);
   line-height: 1.08;

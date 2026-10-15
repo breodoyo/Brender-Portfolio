@@ -1,41 +1,12 @@
-/* One horizontal strip. A single row of four would leave roughly 245px per
-   card, so the row scrolls instead. Cards are a fixed readable width rather
-   than a percentage, which keeps the last card from being cut in half at wide
-   viewports. Card width is deliberately not compressed; the height comes out
-   of the visual canvas proportions instead. */
-.work__list {
-  margin-top: var(--space-5);
+/* Cards wrap into as many columns as fit, so the section never scrolls
+   sideways. The track minimum is capped at the container width, so a single
+   column always fits on the narrowest screens instead of overflowing. */
+.work__grid {
+  margin-top: var(--section-pad);
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: min(24rem, 82vw);
-  gap: clamp(1.25rem, 2.5vw, 2rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: var(--space-4);
   align-items: stretch;
-  min-width: 0;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  overscroll-behavior-x: contain;
-  /* A visible track is the only reliable affordance here: a vertical wheel
-     will not scroll a horizontal container without shift or a trackpad. */
-  scrollbar-width: thin;
-  scrollbar-color: var(--neutral-200) transparent;
-  padding-bottom: var(--space-2);
-}
-
-.work__list:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 4px;
-}
-
-.work__list::-webkit-scrollbar {
-  height: 8px;
-}
-
-.work__list::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-
-.work__list::-webkit-scrollbar-thumb {
-  background-color: var(--neutral-200);
 }
 
 .work__item {
@@ -47,7 +18,6 @@
   background-color: var(--surface);
   border: var(--rule);
   border-top: 3px solid var(--cat);
-  scroll-snap-align: start;
 }
 
 .work__item[data-accent='gold'] {

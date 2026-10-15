@@ -7,24 +7,13 @@ export default function FeaturedProjects() {
   const ref = useReveal<HTMLDivElement>()
 
   return (
-    <section
-      className="work section"
-      id="work"
-      aria-labelledby="work-heading"
-    >
+    <section className="work section" id="work" aria-labelledby="work-heading">
       <div className="shell reveal" ref={ref}>
         <h2 className="section-heading" id="work-heading">
           Projects built to solve real problems.
         </h2>
 
-        {/* tabIndex makes the horizontal scroll reachable by keyboard; a
-            scroll container is not focusable by default. */}
-        <div
-          className="work__list"
-          role="group"
-          aria-label="Featured projects, scroll horizontally"
-          tabIndex={0}
-        >
+        <div className="work__grid">
           {projects.map((project) => (
             <article
               className="work__item"

@@ -1,5 +1,5 @@
 .articles__list {
-  margin-top: var(--space-5);
+  margin-top: var(--section-pad);
   max-width: 60rem;
   border-top: var(--rule);
 }

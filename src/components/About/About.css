@@ -1,88 +1,68 @@
+/* Photo on the left (45%), left-aligned copy on the right (55%), both inside
+   the shared container. */
 .about__inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  gap: clamp(2.5rem, 6vw, 5rem);
-  align-items: start;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+  text-align: left;
+}
+
+.about__figure {
+  margin: 0;
+}
+
+.about__figure img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: 75% 40%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+}
+
+/* One shared column for the heading and both paragraphs, capped at a
+   comfortable reading measure. The ch unit resolves against this element's own
+   (1rem) font-size, so the heading and paragraphs share one edge and width
+   instead of each resolving 60ch against a different font-size. */
+.about__body {
+  max-width: 60ch;
 }
 
 .about__heading {
   font-size: clamp(1.875rem, 3.8vw, 2.875rem);
   margin-top: var(--space-3);
-  max-width: 18ch;
+  text-wrap: balance;
 }
 
-.about__intro {
-  margin-top: var(--space-4);
-  max-width: var(--measure);
-  color: var(--text-muted);
-}
-
-.about__quote {
-  margin-top: var(--space-5);
-  padding-left: var(--space-4);
-  border-left: 3px solid var(--gold);
-  max-width: var(--measure);
-}
-
-.about__quote p {
-  font-family: var(--font-serif);
-  font-size: clamp(1.125rem, 1.8vw, 1.375rem);
-  font-style: italic;
-  line-height: 1.45;
-  color: var(--text);
-}
-
-.about__details-text {
-  color: var(--text-muted);
-  padding-bottom: var(--space-5);
-  border-bottom: var(--rule);
-}
-
-.about__principles {
-  counter-reset: principle;
-}
-
-.about__principle {
-  display: flex;
-  gap: var(--space-4);
-  padding-block: var(--space-4);
-  border-bottom: var(--rule-soft);
-}
-
-.about__principle:last-child {
-  border-bottom: 0;
-  padding-bottom: 0;
-}
-
-.about__principle-number {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--gold);
-  padding-top: 0.2rem;
-  flex: none;
-}
-
-.about__principle-title {
-  font-family: var(--font-sans);
+.about__text {
+  margin-top: 1rem;
   font-size: 1.0625rem;
-  font-weight: 600;
-  letter-spacing: 0;
-}
-
-.about__principle-text {
-  margin-top: var(--space-1);
-  font-size: 0.9375rem;
+  line-height: 1.7;
   color: var(--text-muted);
 }
 
-@media (max-width: 60rem) {
+/* 1.25rem between the heading and the first paragraph; the rule above keeps
+   1rem between the two paragraphs. */
+.about__heading + .about__text {
+  margin-top: 1.25rem;
+}
+
+/* Stack below 800px: photo first (capped at 480px, 4/3), then the copy. */
+@media (max-width: 800px) {
   .about__inner {
     grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
   }
 
-  .about__heading {
-    max-width: 24ch;
+  .about__figure {
+    width: 100%;
+    max-width: 480px;
+    margin-inline: auto;
+  }
+
+  .about__figure img {
+    aspect-ratio: 4 / 3;
   }
 }

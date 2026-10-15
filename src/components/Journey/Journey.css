@@ -1,6 +1,6 @@
 .journey__list {
   position: relative;
-  margin-top: var(--space-5);
+  margin-top: var(--section-pad);
   padding-left: 3.5rem;
   max-width: 56rem;
 }

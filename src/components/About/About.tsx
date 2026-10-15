@@ -1,6 +1,5 @@
 import SectionLabel from '../ui/SectionLabel'
 import { useReveal } from '../../hooks/useReveal'
-import { principles } from '../../data/principles'
 import './About.css'
 
 export default function About() {
@@ -13,51 +12,30 @@ export default function About() {
       aria-labelledby="about-heading"
     >
       <div className="shell about__inner reveal" ref={ref}>
-        <div className="about__lead">
+        <figure className="about__figure">
+          <img src="/Bre-pic.JPG" alt="Brender Odoyo" />
+        </figure>
+
+        <div className="about__copy">
           <SectionLabel>About me</SectionLabel>
 
-          <h2 className="about__heading" id="about-heading">
-            I build software by understanding the problem first.
-          </h2>
+          <div className="about__body">
+            <h2 className="about__heading" id="about-heading">
+              I like understanding what happens behind the scenes.
+            </h2>
 
-          <p className="about__intro">
-            I&rsquo;m a software developer focused on backend and full-stack
-            development. I work primarily with Go on the backend and React and
-            TypeScript on the frontend, with PostgreSQL, Docker, REST APIs, and
-            testing as part of my toolkit.
-          </p>
-
-          <blockquote className="about__quote">
-            <p>
-              &ldquo;I learn by building, testing, breaking things, and
-              improving them.&rdquo;
+            <p className="about__text">
+              I enjoy figuring out how systems work, tracking down bugs, and
+              testing the cases that are easy to overlook. I want to know why
+              something breaks, not just how to patch it.
             </p>
-          </blockquote>
-        </div>
 
-        <div className="about__details">
-          <p className="about__details-text">
-            I&rsquo;m especially interested in software architecture, developer
-            tooling, and products that solve meaningful problems.
-          </p>
-
-          <ol className="about__principles">
-            {principles.map((principle) => (
-              <li className="about__principle" key={principle.number}>
-                <span className="about__principle-number">
-                  {principle.number}
-                </span>
-                <div className="about__principle-body">
-                  <h3 className="about__principle-title">
-                    {principle.title}
-                  </h3>
-                  <p className="about__principle-text">
-                    {principle.description}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ol>
+            <p className="about__text">
+              Lately I've been building more projects, sharpening my
+              problem-solving, and exploring open source. I learn best by working
+              on real code and with other developers.
+            </p>
+          </div>
         </div>
       </div>
     </section>

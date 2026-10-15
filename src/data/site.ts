@@ -9,9 +9,9 @@ export const site = {
   // Explicit line break: the two halves are separate clauses, and a single
   // max-width cannot produce this break because the second line is the longer
   // one. Rendered via white-space: pre-line on .hero__heading.
-  headline: "Hi, I'm Brender.\nA Software Developer",
+  headline: "Hi, I'm Brender.\nA Backend Developer & QA Engineer",
   summary:
-    'I build web applications and APIs with Go, React, TypeScript, and PostgreSQL, with a strong focus on clean architecture, testing, and solving real-world problems.',
+    'I build APIs in Go and test them the way a user would break them.',
   email: 'brenderjohns2@gmail.com',
   year: 2026,
   links: {
