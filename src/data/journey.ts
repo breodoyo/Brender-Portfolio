@@ -5,7 +5,7 @@ export type JourneyEntry = {
   location?: string
   period: string
   summary: string
-  points: string[]
+  points?: string[]
 }
 
 export const journey: JourneyEntry[] = [
@@ -33,14 +33,5 @@ export const journey: JourneyEntry[] = [
     period: '3+ years experience',
     summary:
       'Quality assurance work spanning functional, regression, exploratory, API, and accessibility testing.',
-    points: [
-      'Functional testing',
-      'Regression testing',
-      'Exploratory testing',
-      'API testing',
-      'Accessibility testing',
-      'Bug reporting',
-      'Debugging',
-    ],
   },
 ]

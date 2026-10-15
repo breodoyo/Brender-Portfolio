@@ -91,6 +91,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
+  /* Full-bleed bands (the logo marquee) and the projects carousel manage their
+     own horizontal overflow, so nothing should ever scroll the page sideways.
+     `clip` (not `hidden`) keeps position: sticky working. */
+  overflow-x: clip;
 }
 
 #root {
@@ -202,23 +206,26 @@ ol {
   max-width: 24ch;
 }
 
-/* Centered label with a hairline on each side, opening a section. Shared by
-   the Projects and Resume sections so the two always match. */
-.ruled-label {
+/* Centered label with a hairline on each side, opening a section. One shared
+   definition so every section's label matches exactly: same width, gaps, type
+   and spacing. Placed directly in .shell so its rules end at the container
+   edges, flush with the cards and headings below it. */
+.section-label--ruled {
   display: flex;
   align-items: center;
   gap: 1rem;
   width: 100%;
-  margin-bottom: 1.5rem;
+  margin: 0 0 1.5rem;
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  white-space: nowrap;
   color: var(--text-muted);
 }
 
-.ruled-label::before,
-.ruled-label::after {
+.section-label--ruled::before,
+.section-label--ruled::after {
   content: '';
   flex: 1;
   height: 1px;
@@ -226,12 +233,12 @@ ol {
 }
 
 /* The label owns the gap to a heading that follows it directly. */
-.ruled-label + .section-heading {
+.section-label--ruled + .section-heading {
   margin-top: 0;
 }
 
 @media (max-width: 640px) {
-  .ruled-label {
+  .section-label--ruled {
     gap: 0.75rem;
   }
 }

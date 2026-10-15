@@ -12,7 +12,7 @@ export default function Resume() {
       aria-labelledby="resume-heading"
     >
       <div className="shell reveal" ref={ref}>
-        <p className="ruled-label">Resume</p>
+        <p className="section-label--ruled">Resume</p>
 
         <div className="resume__panel">
           <div className="resume__copy">

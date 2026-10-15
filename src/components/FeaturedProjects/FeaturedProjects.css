@@ -1,11 +1,5 @@
 /* Header spacing */
-.work .ruled-label {
-  margin-top: 3rem;
-  width: 100%;
-}
-
 .work .section-heading {
-  margin-top: 0;
   margin-bottom: 2rem;
   text-wrap: balance;
   max-width: none;

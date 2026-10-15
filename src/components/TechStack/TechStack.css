@@ -1,166 +1,152 @@
 .tech__grid {
-  margin-top: var(--section-pad);
+  margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: stretch;
-  gap: 24px;
+  gap: 1.25rem;
 }
 
-.tech__category {
-  --cat: var(--cream);
-  margin: 0;
-  padding: 2rem;
-  min-height: 340px;
-  background-color: var(--surface);
-  border: var(--rule-soft);
-  border-top: 3px solid var(--cat);
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-  transform: none;
-  transition: transform 0.25s ease, border-color 0.25s ease,
-    box-shadow 0.25s ease, background-color 0.25s ease;
-}
-
-.tech__category[data-accent='gold'] {
-  --cat: var(--gold);
-}
-
-.tech__category[data-accent='terracotta'] {
-  --cat: var(--terracotta);
-}
-
-.tech__category[data-accent='green'] {
-  --cat: var(--green);
-}
-
-.tech__category[data-accent='navy'] {
-  --cat: var(--text-muted);
-}
-
-.tech__category:hover,
-.tech__category:focus-within {
-  transform: translateY(-6px);
-  border-top-color: color-mix(in srgb, var(--cat) 60%, white);
-  box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.6);
-  background-color: color-mix(in srgb, var(--surface) 92%, white);
-}
-
-.tech__label {
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text);
-  padding-bottom: var(--space-2);
-  margin-bottom: var(--space-2);
-  border-bottom: var(--rule-soft);
-}
-
-.tech__caption {
-  font-size: 0.9rem;
-  color: #a0a6b1;
-  margin-bottom: var(--space-3);
-}
-
-.tech__list {
+.tech__card {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  padding: 10px;
+  background-color: #1b1d22;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.16s ease;
 }
 
-.tech__item {
+.tech__card:hover {
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.tech__header {
+  position: relative;
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 1.0625rem;
-  line-height: 1.45;
+  align-items: flex-end;
+  height: 130px;
+  padding: 1.25rem;
+  overflow: hidden;
+  border-radius: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tech__title {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+  line-height: 1.1;
+  color: #fff;
+}
+
+/* Gradient fills, one per category. */
+.tech__card[data-tone='backend'] .tech__header {
+  background-image: linear-gradient(135deg, #3a4560, #1f2433);
+}
+
+.tech__card[data-tone='frontend'] .tech__header {
+  background-image: linear-gradient(135deg, #a8761f, #4a3410);
+}
+
+.tech__card[data-tone='engineering'] .tech__header {
+  background-image: linear-gradient(135deg, #a65a45, #4a2a22);
+}
+
+.tech__card[data-tone='testing'] .tech__header {
+  background-image: linear-gradient(135deg, #5f8a5f, #243824);
+}
+
+/* Decorative layers: pure CSS, faint white, anchored to the right 40% only
+   so the left side stays clear for the title. */
+.tech__header::before,
+.tech__header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 40%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Backend: four evenly spaced vertical bands (14px wide, 10px gaps). */
+.tech__card[data-tone='backend'] .tech__header::before {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.14),
+      rgba(255, 255, 255, 0.14)
+    ),
+    linear-gradient(rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.11)),
+    linear-gradient(rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.09)),
+    linear-gradient(rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08));
+  background-repeat: no-repeat;
+  background-size: 14px 100%;
+  background-position: right 0 center, right 24px center, right 48px center,
+    right 72px center;
+}
+
+.tech__card[data-tone='backend'] .tech__header::after {
+  content: none;
+}
+
+/* Frontend: concentric rings at the top right. */
+.tech__card[data-tone='frontend'] .tech__header::before {
+  background-image: repeating-radial-gradient(
+    circle at top right,
+    transparent 0 18px,
+    rgba(255, 255, 255, 0.1) 18px 20px
+  );
+}
+
+.tech__card[data-tone='frontend'] .tech__header::after {
+  background-image: repeating-radial-gradient(
+    circle at bottom right,
+    transparent 0 13px,
+    rgba(255, 255, 255, 0.08) 13px 15px
+  );
+}
+
+/* Engineering: diagonal bands. */
+.tech__card[data-tone='engineering'] .tech__header::before {
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0 10px,
+    transparent 10px 34px
+  );
+}
+
+.tech__card[data-tone='engineering'] .tech__header::after {
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0 3px,
+    transparent 3px 22px
+  );
+}
+
+/* Testing: dotted grid, 2px dots on a 12px grid. */
+.tech__card[data-tone='testing'] .tech__header::before {
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.18) 2px,
+    transparent 2px
+  );
+  background-size: 12px 12px;
+  background-position: right top;
+}
+
+.tech__card[data-tone='testing'] .tech__header::after {
+  content: none;
+}
+
+.tech__body {
+  padding: 1.1rem 0.9rem 1rem;
+}
+
+.tech__tools {
+  font-size: 1rem;
+  line-height: 1.7;
   color: var(--text);
-  transition: transform 0.2s ease;
-}
-
-.tech__item:hover {
-  transform: translateX(4px);
-}
-
-.tech__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  flex-shrink: 0;
-  overflow: visible;
-}
-
-.tech__icon--go {
-  width: 26px;
-}
-
-.tech__icon svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-  transition: filter 0.2s ease;
-}
-
-.tech__logo {
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
-  display: block;
-  transition: filter 0.2s ease;
-}
-
-.tech__logo--go {
-  transform: scale(1.6);
-  transform-origin: center;
-}
-
-.tech__bullet {
-  width: 0.5rem;
-  height: 0.5rem;
-  background-color: var(--cat);
-  display: block;
-  transition: filter 0.2s ease;
-}
-
-.tech__item:hover .tech__logo,
-.tech__item:hover .tech__icon svg,
-.tech__item:hover .tech__bullet {
-  filter: brightness(1.35);
-}
-
-@keyframes tech-card-in {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.js .tech__category {
-  opacity: 0;
-}
-
-.js .tech__grid--in .tech__category {
-  opacity: 1;
-  animation: tech-card-in 0.4s ease backwards;
-}
-
-.js .tech__grid--in .tech__category:nth-child(2) {
-  animation-delay: 80ms;
-}
-
-.js .tech__grid--in .tech__category:nth-child(3) {
-  animation-delay: 160ms;
-}
-
-.js .tech__grid--in .tech__category:nth-child(4) {
-  animation-delay: 240ms;
 }
 
 @media (max-width: 1000px) {
@@ -172,45 +158,5 @@
 @media (max-width: 600px) {
   .tech__grid {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .tech__category {
-    padding: 1.5rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .tech__category {
-    transition: none;
-  }
-
-  .tech__category:hover,
-  .tech__category:focus-within {
-    transform: none;
-  }
-
-  .tech__item,
-  .tech__logo,
-  .tech__icon svg,
-  .tech__bullet {
-    transition: none;
-  }
-
-  .tech__item:hover {
-    transform: none;
-  }
-
-  .tech__item:hover .tech__logo,
-  .tech__item:hover .tech__icon svg,
-  .tech__item:hover .tech__bullet {
-    filter: none;
-  }
-
-  .js .tech__category {
-    opacity: 1;
-  }
-
-  .js .tech__grid--in .tech__category {
-    animation: none;
   }
 }

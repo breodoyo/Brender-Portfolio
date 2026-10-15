@@ -53,7 +53,7 @@ export default function FeaturedProjects() {
   return (
     <section className="work section" id="work" aria-labelledby="work-heading">
       <div className="shell reveal" ref={ref}>
-        <p className="ruled-label">My Latest Projects</p>
+        <p className="section-label--ruled">My Latest Projects</p>
 
         <h2 className="section-heading" id="work-heading">
           Projects built to solve real problems.

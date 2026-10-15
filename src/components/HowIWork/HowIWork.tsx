@@ -12,6 +12,8 @@ export default function HowIWork() {
       aria-labelledby="process-heading"
     >
       <div className="shell reveal" ref={ref}>
+        <p className="section-label--ruled">My Process</p>
+
         <div className="process__panel">
           <div className="process__intro">
             <h2 className="section-heading" id="process-heading">

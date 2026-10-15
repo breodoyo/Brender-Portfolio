@@ -1,67 +1,33 @@
 .journey__list {
-  position: relative;
-  margin-top: var(--section-pad);
-  padding-left: 3.5rem;
-  max-width: 56rem;
-}
-
-.journey__list::before {
-  content: '';
-  position: absolute;
-  left: 1rem;
-  top: 0.75rem;
-  bottom: 0.75rem;
-  width: 1px;
-  background-color: var(--border);
+  margin-top: 2rem;
+  margin-bottom: 3rem;
 }
 
 .journey__item {
-  position: relative;
-  padding-bottom: var(--space-5);
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  padding: 2rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .journey__item:last-child {
-  padding-bottom: 0;
-}
-
-.journey__node {
-  position: absolute;
-  left: -3.5rem;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  background-color: var(--surface);
-  border: var(--rule);
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: var(--text);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .journey__period {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--gold);
 }
 
-.journey__role {
-  font-family: var(--font-serif);
-  font-size: clamp(1.25rem, 2.2vw, 1.625rem);
-  margin-top: var(--space-2);
-  letter-spacing: -0.01em;
-}
-
 .journey__org {
-  margin-top: var(--space-1);
+  margin-top: var(--space-2);
   font-size: 0.9375rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text);
 }
 
@@ -70,18 +36,25 @@
   color: var(--text-muted);
 }
 
+.journey__role {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+  letter-spacing: -0.01em;
+}
+
 .journey__summary {
   margin-top: var(--space-3);
-  max-width: 52ch;
+  max-width: 62ch;
+  font-size: 1.0625rem;
+  line-height: 1.7;
   color: var(--text-muted);
 }
 
 .journey__points {
   margin-top: var(--space-3);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.5rem 1.5rem;
-  max-width: 46rem;
 }
 
 .journey__point {
@@ -102,19 +75,8 @@
   background-color: var(--gold);
 }
 
-@media (max-width: 34rem) {
-  .journey__list {
-    padding-left: 2.75rem;
-  }
-
-  .journey__list::before {
-    left: 0.75rem;
-  }
-
-  .journey__node {
-    left: -2.75rem;
-    width: 1.625rem;
-    height: 1.625rem;
-    font-size: 0.625rem;
+@media (max-width: 800px) {
+  .journey__item {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
